@@ -1,0 +1,26 @@
+{
+    "name": "tompedals/helpscout-dynamic-app",
+    "description": "A library to handle custom HelpScout Dynamic app requests",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["helpscout"],
+    "require": {
+        "php": ">=5.6",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.5",
+        "mockery/mockery": "^0.9",
+        "zendframework/zend-diactoros": "^1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "TomPedals\\HelpScoutApp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TomPedals\\HelpScoutApp\\": "tests/"
+        }
+    }
+}
