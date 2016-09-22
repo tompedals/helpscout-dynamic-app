@@ -38,9 +38,9 @@ class AppRequest
     public function __construct(Customer $customer, Mailbox $mailbox, Ticket $ticket, User $user)
     {
         $this->customer = $customer;
-        $this->mailbox = $mailbox;
-        $this->ticket = $ticket;
-        $this->user = $user;
+        $this->mailbox  = $mailbox;
+        $this->ticket   = $ticket;
+        $this->user     = $user;
     }
 
     /**

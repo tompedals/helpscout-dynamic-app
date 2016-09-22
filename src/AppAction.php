@@ -26,7 +26,7 @@ class AppAction
     public function __construct(AppRequestFactory $appRequestFactory, AppHandlerInterface $appHandler)
     {
         $this->appRequestFactory = $appRequestFactory;
-        $this->appHandler = $appHandler;
+        $this->appHandler        = $appHandler;
     }
 
     /**

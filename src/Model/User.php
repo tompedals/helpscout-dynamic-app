@@ -4,7 +4,7 @@ namespace TomPedals\HelpScoutApp\Model;
 
 class User
 {
-    const ROLE_USER = 'user';
+    const ROLE_USER  = 'user';
     const ROLE_ADMIN = 'admin';
     const ROLE_OWNER = 'owner';
 
@@ -16,10 +16,10 @@ class User
 
     public function __construct($id, $firstName, $lastName, $role, $convRedirect)
     {
-        $this->id = $id;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->role = $role;
+        $this->id           = $id;
+        $this->firstName    = $firstName;
+        $this->lastName     = $lastName;
+        $this->role         = $role;
         $this->convRedirect = $convRedirect;
     }
 

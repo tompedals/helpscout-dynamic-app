@@ -12,11 +12,11 @@ class Customer
 
     public function __construct($id, $firstName, $lastName, $email, array $emails)
     {
-        $this->id = $id;
+        $this->id        = $id;
         $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->emails = $emails;
+        $this->lastName  = $lastName;
+        $this->email     = $email;
+        $this->emails    = $emails;
     }
 
     public static function create(array $data)

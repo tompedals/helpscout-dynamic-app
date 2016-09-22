@@ -10,8 +10,8 @@ class Ticket
 
     public function __construct($id, $number, $subject)
     {
-        $this->id = $id;
-        $this->number = $number;
+        $this->id      = $id;
+        $this->number  = $number;
         $this->subject = $subject;
     }
 

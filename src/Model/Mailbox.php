@@ -9,7 +9,7 @@ class Mailbox
 
     public function __construct($id, $email)
     {
-        $this->id = $id;
+        $this->id    = $id;
         $this->email = $email;
     }
 
