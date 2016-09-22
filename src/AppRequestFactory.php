@@ -10,7 +10,7 @@ use TomPedals\HelpScoutApp\Model\Mailbox;
 use TomPedals\HelpScoutApp\Model\Ticket;
 use TomPedals\HelpScoutApp\Model\User;
 
-class DynamicAppRequestFactory
+class AppRequestFactory
 {
     const SIGNATURE_HEADER = 'X-HelpScout-Signature';
 
@@ -30,14 +30,14 @@ class DynamicAppRequestFactory
     /**
      * @param ServerRequestInterface $request
      *
-     * @return DynamicAppRequest
+     * @return AppRequest
      */
     public function create(ServerRequestInterface $request)
     {
         $data = $this->decodeJsonBody($request);
         $this->verifySignature($request);
 
-        return new DynamicAppRequest(
+        return new AppRequest(
             Customer::create(isset($data['customer']) ? $data['customer'] : []),
             Mailbox::create(isset($data['mailbox']) ? $data['mailbox'] : []),
             Ticket::create(isset($data['ticket']) ? $data['ticket'] : []),

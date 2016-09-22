@@ -7,7 +7,7 @@ use TomPedals\HelpScoutApp\Model\Mailbox;
 use TomPedals\HelpScoutApp\Model\Ticket;
 use TomPedals\HelpScoutApp\Model\User;
 
-class DynamicAppRequest
+class AppRequest
 {
     /**
      * @var Customer

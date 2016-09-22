@@ -2,7 +2,7 @@
 
 namespace TomPedals\HelpScoutApp;
 
-class DynamicAppResponse
+class AppResponse
 {
     /**
      * @var string

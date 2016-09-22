@@ -11,13 +11,13 @@ use TomPedals\HelpScoutApp\Model\User;
 use Zend\Diactoros\ServerRequest;
 use Zend\Diactoros\Stream;
 
-class DynamicAppRequestFactoryTest extends \PHPUnit_Framework_TestCase
+class AppRequestFactoryTest extends \PHPUnit_Framework_TestCase
 {
     private $factory;
 
     public function setUp()
     {
-        $this->factory = new DynamicAppRequestFactory('secret');
+        $this->factory = new AppRequestFactory('secret');
     }
 
     public function testCreatesReturnsNewRequestWithCustomer()
@@ -81,7 +81,7 @@ class DynamicAppRequestFactoryTest extends \PHPUnit_Framework_TestCase
         $this->expectException(InvalidSignatureException::class);
 
         $request = new ServerRequest([], [], null, 'POST', $this->createStream('{}'));
-        $request = $request->withHeader(DynamicAppRequestFactory::SIGNATURE_HEADER, 'invalid');
+        $request = $request->withHeader(AppRequestFactory::SIGNATURE_HEADER, 'invalid');
 
         $this->factory->create($request);
     }
@@ -128,7 +128,7 @@ class DynamicAppRequestFactoryTest extends \PHPUnit_Framework_TestCase
 JSON;
 
         $request = new ServerRequest([], [], null, 'POST', $this->createStream($body));
-        $request = $request->withHeader(DynamicAppRequestFactory::SIGNATURE_HEADER, 'LhgzwysWt/SZpSVvGEii4iTgHLA=');
+        $request = $request->withHeader(AppRequestFactory::SIGNATURE_HEADER, 'LhgzwysWt/SZpSVvGEii4iTgHLA=');
 
         return $request;
     }
