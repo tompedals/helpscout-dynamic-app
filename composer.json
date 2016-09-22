@@ -1,6 +1,6 @@
 {
     "name": "tompedals/helpscout-dynamic-app",
-    "description": "A library to handle custom HelpScout Dynamic app requests",
+    "description": "A library to assist the creation of Help Scout dynamic apps",
     "type": "library",
     "license": "MIT",
     "keywords": ["helpscout"],
