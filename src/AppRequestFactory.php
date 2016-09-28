@@ -34,8 +34,9 @@ class AppRequestFactory
      */
     public function create(ServerRequestInterface $request)
     {
-        $data = $this->decodeJsonBody($request);
-        $this->verifySignature($request);
+        $body = (string) $request->getBody();
+        $data = $this->decodeJsonBody($body);
+        $this->verifySignature($body, $request->getHeaderLine(self::SIGNATURE_HEADER));
 
         return new AppRequest(
             Customer::create(isset($data['customer']) ? $data['customer'] : []),
@@ -46,15 +47,15 @@ class AppRequestFactory
     }
 
     /**
-     * @param ServerRequestInterface $request
+     * @param string $body
      *
      * @return array JSON decoded data
      *
      * @throws InvalidRequestException
      */
-    private function decodeJsonBody(ServerRequestInterface $request)
+    private function decodeJsonBody($body)
     {
-        $data = json_decode((string) $request->getBody(), true);
+        $data = json_decode($body, true);
         if ($data === null) {
             throw new InvalidRequestException('The request JSON body could not be decoded');
         }
@@ -63,15 +64,16 @@ class AppRequestFactory
     }
 
     /**
-     * @param ServerRequestInterface $request
+     * @param string $body
+     * @param string $signature
      *
      * @throws InvalidSignatureException
      */
-    private function verifySignature(ServerRequestInterface $request)
+    private function verifySignature($body, $signature)
     {
-        $signature = base64_encode(hash_hmac('sha1', (string) $request->getBody(), $this->secretKey, true));
+        $expectedSignature = base64_encode(hash_hmac('sha1', $body, $this->secretKey, true));
 
-        if ($request->getHeaderLine(self::SIGNATURE_HEADER) !== $signature) {
+        if ($signature !== $expectedSignature) {
             throw new InvalidSignatureException('The request signature was invalid');
         }
     }
